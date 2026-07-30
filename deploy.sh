@@ -1,15 +1,14 @@
 #!/bin/bash
-set -e
+# Navigate to the Jenkins workspace where the latest code is pulled
+cd /var/lib/jenkins/workspace/my-node-app
 
-echo "Starting deployment..."
+# Install dependencies and restart/reload PM2
 npm install --production
 
-# Check if PM2 process is already running
+# Check if PM2 is running the app, otherwise start it fresh
 if pm2 list | grep -q "my-node-app"; then
-  echo "Reloading existing PM2 process..."
   pm2 reload my-node-app
 else
-  echo "Starting new PM2 process..."
   pm2 start index.js --name "my-node-app"
 fi
 
