@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => {
   res.json({
     status: 'success',
-    message: 'CI/CD Pipeline with Jenkins & PM2 is working!',
+    message: 'CI/CD Pipeline with Jenkins and i have written this to test ci cd is working!',
     timestamp: new Date()
   });
 });
